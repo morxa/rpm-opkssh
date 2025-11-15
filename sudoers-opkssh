@@ -1,0 +1,1 @@
+opkssh ALL=(ALL) NOPASSWD: /usr/bin/opkssh readhome *
