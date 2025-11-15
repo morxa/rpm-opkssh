@@ -78,8 +78,8 @@ bzip2 -9 opkssh.pp
 %go_vendor_license_install -c %{S:2}
 install -m 0755 -vd                     %{buildroot}%{_bindir}
 install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
-install -m 0644 -vp -D %{SOURCE3} %{buildroot}%{_sysconfdir}/opk/providers
-install -m 0644 -vp -D %{SOURCE4} %{buildroot}%{_sysconfdir}/opk/auth_id
+install -m 0640 -vp -D %{SOURCE3} %{buildroot}%{_sysconfdir}/opk/providers
+install -m 0640 -vp -D %{SOURCE4} %{buildroot}%{_sysconfdir}/opk/auth_id
 install -m 0600 -vp -D %{SOURCE5} %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/60-opkssh.conf
 install -m 0440 -vp -D %{SOURCE6} %{buildroot}%{_sysconfdir}/sudoers.d/opkssh
 install -m 0644 -vp -D %{SOURCE7} %{buildroot}%{_sysusersdir}/opkssh.conf
