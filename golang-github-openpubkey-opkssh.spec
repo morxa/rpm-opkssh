@@ -40,8 +40,8 @@ of long-lived SSH keys.
 
 %package server
 Summary:        Server configuration for opkssh (OpenPubkey SSH)
-
 Requires:       %{name} = %{version}-%{release}
+BuildArch:      noarch
 
 %description server
 Server configuration for opkssh (OpenPubkey SSH).
