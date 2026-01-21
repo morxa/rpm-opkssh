@@ -74,6 +74,7 @@ SELinux policy for opkssh (OpenPubkey SSH).
 %build
 %global gomodulesmode GO111MODULE=on
 %gobuild -o %{gobuilddir}/bin/opkssh %{goipath}
+sed -i "s/sshd_t/sshd_session_t/g" opkssh.te
 make -f %{_datadir}/selinux/devel/Makefile opkssh.pp
 bzip2 -9 opkssh.pp
 
