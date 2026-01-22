@@ -75,7 +75,12 @@ SELinux policy for opkssh (OpenPubkey SSH).
 %build
 %global gomodulesmode GO111MODULE=on
 %gobuild -o %{gobuilddir}/bin/opkssh %{goipath}
+# In Fedora >= 43, the sshd server has been split into a listener binary and a per-session binary.
+# The SELinux type for the per-session binary is sshd_session_t.
+# https://github.com/fedora-selinux/selinux-policy/commit/efa131d050dd69a07f030c3dc5c8e189bdc49fd3
+%if 0%{?fedora} >= 43
 sed -i "s/sshd_t/sshd_session_t/g" opkssh.te
+%endif
 make -f %{_datadir}/selinux/devel/Makefile opkssh.pp
 bzip2 -9 opkssh.pp
 
