@@ -101,10 +101,6 @@ install -m 0644 -vp -D opkssh.pp.bz2 %{buildroot}%{_datadir}/selinux/packages/ta
 %pre server-selinux
 %selinux_relabel_pre -s %{selinuxtype}
 
-%post server
-# The opkssh binary expects these files to be owned by the opkssh user/group.
-chown :opkssh %{_sysconfdir}/opk/{providers,auth_id}
-
 %post server-selinux
 %selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
 
@@ -123,8 +119,8 @@ fi
 %{_bindir}/opkssh
 
 %files server
-%config(noreplace) %{_sysconfdir}/opk/providers
-%config(noreplace) %{_sysconfdir}/opk/auth_id
+%attr(-, root, opkssh) %config(noreplace) %{_sysconfdir}/opk/providers
+%attr(-, root, opkssh) %config(noreplace) %{_sysconfdir}/opk/auth_id
 
 # These files should not be modified by the user, so we do not use 'noreplace' here.
 %config %{_sysconfdir}/ssh/sshd_config.d/60-opkssh.conf
