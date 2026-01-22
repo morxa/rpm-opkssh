@@ -63,6 +63,13 @@ Requires(post): selinux-policy-%{selinuxtype}
 %description server-selinux
 SELinux policy for opkssh (OpenPubkey SSH).
 
+%package doc
+Summary:        Documentation for opkssh (OpenPubkey SSH)
+BuildArch:      noarch
+
+%description doc
+Documentation for opkssh (OpenPubkey SSH).
+
 %prep
 %goprep -A
 %setup -q -T -D -a1 %{forgesetupargs}
@@ -119,7 +126,6 @@ fi
 
 %files -f %{go_vendor_license_filelist}
 %license vendor/modules.txt
-%doc docs README.md SECURITY.md
 %{_bindir}/opkssh
 
 %files server
@@ -136,6 +142,9 @@ fi
 %files server-selinux
 %{_datadir}/selinux/packages/targeted/%{modulename}.pp.bz2
 %ghost %verify(not md5 size mode mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename}
+
+%files doc
+%doc docs README.md SECURITY.md
 
 %changelog
 %autochangelog
