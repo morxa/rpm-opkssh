@@ -119,8 +119,7 @@ fi
 
 %files -f %{go_vendor_license_filelist}
 %license vendor/modules.txt
-%doc docs CODE-OF-CONDUCT.md CONTRIBUTING.md README.md SECURITY.md
-%doc scripts/install-linux-script.md scripts/installing.md
+%doc docs README.md SECURITY.md
 %{_bindir}/opkssh
 
 %files server
