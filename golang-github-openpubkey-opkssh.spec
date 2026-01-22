@@ -45,6 +45,8 @@ OpenPubkey SSH is a tool which enables ssh to be used with OpenID Connect
 allowing SSH access to be managed via identities like alice@example.com instead
 of long-lived SSH keys.
 
+# Split the server into a separate package to avoid opkssh authentication available
+# on client-only systems. This improves security by reducing the attack surface.
 %package server
 Summary:        Server configuration for opkssh (OpenPubkey SSH)
 BuildArch:      noarch
