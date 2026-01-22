@@ -11,7 +11,7 @@ Version:                0.12.0
 %gometa -L -f
 
 
-Name:           golang-github-openpubkey-opkssh
+Name:           opkssh
 Release:        %autorelease
 Summary:        Opkssh (OpenPubkey SSH)
 Provides:       opkssh = %{version}-%{release}
